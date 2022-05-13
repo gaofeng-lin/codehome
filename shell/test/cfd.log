@@ -1,0 +1,152 @@
+Process 0 numberOfProcessor = 1 name = phdev
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$#                                                     #$
+$#  PPPPP H   H  EEEE N     N  GGGGG  L     EEEEE III  #$
+$#  P   P H   H  E    N N   N  G      L     E      I   #$
+$#  PPPPP HHHHH  EEEE N  N  N  G  GG  L     EEEEE  I   #$
+$#  P     H   H  E    N   N N  G   G  L     E      I   #$
+$#  P     H   H  EEEE N     N  GGGGG  LLLL  EEEEE III  #$
+$#                                                     #$
+$#=====================================================#$
+$#                                                     #$
+$# Platform for Hybrid Engineering Simulation of Flows #$
+$#                                                     #$
+$#       Computational Aerodynamics Institute          #$
+$#  China Aerodynamics Research and Development Center #$
+$#            (C) Copyright, Since 2010                #$
+$#                                                     #$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Control parameters reading by server ...
+    CGNS file name: ../grid/m6_str.cgns
+	Block number = 4
+  Grid Dimension  :  3 
+  Number of Points:  40425 
+  Number of Faces :  114048 
+  Number of Cells :  36864 
+ iZone =        0 numberOfBlocks =        4 ni, nj, nk =       25      49      33
+  Grid Dimension  :  3 
+  Number of Points:  118041 
+  Number of Faces :  339072 
+  Number of Cells :  110592 
+ iZone =        1 numberOfBlocks =        4 ni, nj, nk =       73      49      33
+  Grid Dimension  :  3 
+  Number of Points:  118041 
+  Number of Faces :  339072 
+  Number of Cells :  110592 
+ iZone =        2 numberOfBlocks =        4 ni, nj, nk =       73      49      33
+  Grid Dimension  :  3 
+  Number of Points:  40425 
+  Number of Faces :  114048 
+  Number of Cells :  36864 
+ iZone =        3 numberOfBlocks =        4 ni, nj, nk =       25      49      33
+flow_solver_id = 1
+number_of_blocks = 4
+ni,nj,nk = 25 49 33
+ni,nj,nk = 73 49 33
+ni,nj,nk = 73 49 33
+ni,nj,nk = 25 49 33
+The most valid multi-grid level is:  4 
+iZone = 0
+ numberOfInterfaces = 3456
+iZone = 1
+ numberOfInterfaces = 6528
+iZone = 2
+ numberOfInterfaces = 6528
+iZone = 3
+ numberOfInterfaces = 3456
+    Writing new HDF5 version grid to file ....
+      Dumping zone 0 ....
+0x7ffe904d0358      Dumping zone 1 ....
+0x7ffe904d0358      Dumping zone 2 ....
+0x7ffe904d0358      Dumping zone 3 ....
+0x7ffe904d0358
+    ----- Time statistics -----
+          Wall time = 0.129
+    ----- End time statistics -----
+
+results directory has been created successfully !
+Job Done.
+cfdversion = 5720
+Process 0 numberOfProcessor = 1 name = phdev
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$#                                                     #$
+$#  PPPPP H   H  EEEE N     N  GGGGG  L     EEEEE III  #$
+$#  P   P H   H  E    N N   N  G      L     E      I   #$
+$#  PPPPP HHHHH  EEEE N  N  N  G  GG  L     EEEEE  I   #$
+$#  P     H   H  E    N   N N  G   G  L     E      I   #$
+$#  P     H   H  EEEE N     N  GGGGG  LLLL  EEEEE III  #$
+$#                                                     #$
+$#=====================================================#$
+$#                                                     #$
+$# Platform for Hybrid Engineering Simulation of Flows #$
+$#                                                     #$
+$#       Computational Aerodynamics Institute          #$
+$#  China Aerodynamics Research and Development Center #$
+$#            (C) Copyright, Since 2010                #$
+$#                                                     #$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+Control parameters reading by server ...
+This grid file is new HDF5 version!
+Grid Type:  STRUCTGRID 
+Reading Structured Grid Of Zone  0 ...
+  Grid Dimension  :  3 
+  Number of Points:  40425 
+  Number of Faces :  114048 
+  Number of Cells :  36864 
+    Reading coordinates ...
+0x7ffc35a76938    Reading interface ...
+Reading Structured Grid Of Zone  1 ...
+  Grid Dimension  :  3 
+  Number of Points:  118041 
+  Number of Faces :  339072 
+  Number of Cells :  110592 
+    Reading coordinates ...
+0x7ffc35a76938    Reading interface ...
+Reading Structured Grid Of Zone  2 ...
+  Grid Dimension  :  3 
+  Number of Points:  118041 
+  Number of Faces :  339072 
+  Number of Cells :  110592 
+    Reading coordinates ...
+0x7ffc35a76938    Reading interface ...
+Reading Structured Grid Of Zone  3 ...
+  Grid Dimension  :  3 
+  Number of Points:  40425 
+  Number of Faces :  114048 
+  Number of Cells :  36864 
+    Reading coordinates ...
+0x7ffc35a76938    Reading interface ...
+Server Processor ID: 0
+Minimum and maximum boundary box of computational field:
+    xMin = -6.373000e+00,  xMax = 7.410700e+00
+    yMin = -3.902208e-16,  yMax = 7.373000e+00
+    zMin = -6.375381e+00,  zMax = 6.375381e+00
+
+The most valid multi-grid level is:  4 
+
+  Min && Max wall distance : 9.50885e-06, 8.29821
+Inflow Conditions 
+  Gama                     :     1.4 
+  Mach Number              :     0.73 
+  Attack Angle             :     2.79 degree 
+  Sideslip Angle           :     0 degree 
+  Reynolds Number          :     6.5e+06 1/m 
+  Dimensional Pressure     :     38728 Pa 
+  Dimensional Density      :     0.468212 kg/m3 
+  Dimensional Temperature  :     288.15 K 
+  Wall Temperature         :     Adiabatic Wall 
+Geometry Informations 
+  Scale Factor             :     1 
+  Force Reference Area     :     1 
+  Force Reference Length   :     1 
+  Force Reference x        :     0 
+  Force Reference y        :     0 
+  Force Reference z        :     0 
+Wait for all processors before iteration ...
+Wait is over,start iteration ...
+
+Iter 	averageRes    	maxRes    	maxResCoorX    	maxResCoorY    	maxResCoorZ    maxResVariable   WallTime
+1      	5.73170e-01	3.39566e-01	6.83966e+00	1.57575e-01	5.78698e+00	4	9.86481e+00
+
+Iter 	averageRes    	maxRes    	maxResCoorX    	maxResCoorY    	maxResCoorZ    maxResVariable   WallTime
+2      	5.57139e-01	3.27471e-01	6.83966e+00	1.57575e-01	5.78698e+00	4	1.95733e+01
