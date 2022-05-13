@@ -1,0 +1,14 @@
+########################################################
+
+int a=10;
+
+int   dire = 2;
+
+double b=30.2;
+
+double totalp = 1.2e6;
+
+string  str_scheme_name    =  "roe"; 
+string str_limiter    = "vanleer";
+
+// --------------------------overset grid parameter-------------------------
