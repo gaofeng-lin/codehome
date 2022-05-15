@@ -1,0 +1,11 @@
+{
+    "DbSettings": {
+      "host": "127.0.0.1",
+      "port": 3306,
+      "password":"123456",
+      "dbname":"Demo"
+    },
+    "test2": 12.234,
+    "angularVelocity_0[]": [0.1, 0.2, 0.3] 
+}
+  

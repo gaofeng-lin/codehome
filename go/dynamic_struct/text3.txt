@@ -1,0 +1,12 @@
+package main
+
+type Rep struct {
+	DBSettings struct {
+		Dbname   string `json:"dbname"`
+		Host     string `json:"host"`
+		Password string `json:"password"`
+		Port     int64  `json:"port"`
+	} `json:"DbSettings"`
+	AngularVelocity0 []float64 `json:"angularVelocity_0[]"`
+	Test2            float64   `json:"test2"`
+}
