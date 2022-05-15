@@ -1,0 +1,11 @@
+package main
+
+type Rep struct {
+	AesKey     string `json:"AesKey"`
+	DBSettings struct {
+		Dbname   string `json:"dbname"`
+		Host     string `json:"host"`
+		Password string `json:"password"`
+		Port     int64  `json:"port"`
+	} `json:"DbSettings"`
+}
