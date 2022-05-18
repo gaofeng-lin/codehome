@@ -6,6 +6,7 @@
       "dbname":"Demo"
     },
     "test2": 12.234,
-    "angularVelocity_0[]": [0.1, 0.2, 0.3] 
+    "angularVelocity_0[]": [0.1, 0.2, 0.3],
+    "visualVariables[]": [0,1,2,3,4,5,6,15]
 }
   
