@@ -32,10 +32,8 @@ class App extends React.Component{
 
   render(){
     return(
-      // <Form schema={this.schema} />
-      <div>
-        {this.schema}
-      </div>
+      <Form schema={this.schema} />
+
   
     )
   }
