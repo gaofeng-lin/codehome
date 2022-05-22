@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+</head>
+<body>
+ 
+<div id="example"></div>
+<script type="text/babel">
+
+var schema  = axios({url:'https://63cc3e21-7c75-4507-8414-11dde227bc60.mock.pstmn.io/test'}).then(
+    (data)=>{
+        // document.write(data)
+        for(var j in data){
+            console.log(j)
+            console.log(data[j])
+        }
+        document.write(data['data'])
+    },
+    (reason)=>{
+        console.log(reason)
+    }
+)
+// ReactDOM.render(
+//     <h1>Hello, world!</h1>,
+//     document.getElementById('example')
+// );
+// var i
+// for(i in schema){
+//     document.write(i)
+// }
+
+// document.write(data)
+
+var me = {height: 180, weight: 70};
+
+var i;
+for (i in me) {
+document.write(i);
+document.write(me[i])
+//   console.log(i);
+//   console.log(me[i]);
+}
+
+
+</script>
+ 
+</body>
+</html>
