@@ -106,11 +106,16 @@ class App extends React.Component <any, isState> {
   //     }) as JSONSchema7}  />
   //   )
   // }
+    onSubmit=()=>{
+      console.log("hello")
+    }
 
     render(){
       return(
-        <Form schema = {this.state.schema}
-        ></Form>
+        <Form schema = {this.state.schema} 
+        >
+          <button onClick={this.onSubmit}>计算</button>
+        </Form>
       )
     }
 
