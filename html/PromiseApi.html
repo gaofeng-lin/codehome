@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const PENDING = 'PENDING';
+        const RESOLVED = 'RESOLVED';	// 成功态
+        const REJECTED = 'REJECTED';	// 失败态
+        class Promise {
+          constructor(executor) {
+            this.status = PENDING;	// 默认是等待态
+            this.value = undefined
+            this.reason = undefined
+            const resolve = (value) => {
+                if (this.status === PENDING) {
+                    this.status = RESOLVED
+                    this.value = value
+                }
+            };
+            const reject = (reason) => {
+                if (this.status === PENDING) {
+                    this.status = REJECTED
+                    this.reason = reason
+                }
+            };
+            try {
+                executor(resolve, reject);
+            } catch (error) {
+                reject(e)
+            }
+            
+          }
+          then(onfulfilled, onrejected) {
+            if(this.status === RESOLVED){
+                onfulfilled(this.value)
+            }
+
+            if(this.status === REJECTED) {
+                onrejected(this.reason)
+            }
+          }
+        }
+
+
+        let pro = new Promise((resolve, reject)=>{
+            // resolve('value');
+            setTimeout(()=>{
+                resolve('value');
+            },1000)
+        })
+
+        pro.then((data)=>{
+            console.log('resolve response', data);
+        },(err)=>{
+            console.log('reject response', err)
+        }
+        )
+
+    </script>
+</body>
+</html>

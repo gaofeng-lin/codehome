@@ -19,7 +19,7 @@ const root = ReactDOM.createRoot(
 
 
 
-const schema: any  = {
+const schema :any = {
   title: "Test form",
   type: "object",
   properties: {
@@ -38,7 +38,7 @@ const schema: any  = {
 root.render(
   <React.StrictMode>
     {/* <Form schema={schema} /> */}
-    <App></App>
+    <App ></App>
   </React.StrictMode>
 );
 

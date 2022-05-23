@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//     function back(callback){
+//     schema = axios({url:'https://63cc3e21-7c75-4507-8414-11dde227bc60.mock.pstmn.io/test'}).then(
+//         (data)=>{
+//             callback(data.data)
+//         }, 
+//         (reason)=>{
+//             console.log(reason)
+//         }
+//     )
+// }
+
+// back(function(a){
+//     console.log(a)
+// });
+
+    // async function tesy(){
+    //     schema = axios({url:'https://63cc3e21-7c75-4507-8414-11dde227bc60.mock.pstmn.io/test'});
+    //     return schema
+    // }
+
+    
+    // const res = await tesy();
+    // console.log(res)
+
+    async function getdata() {
+  let data;
+  data = await axios({url:'https://63cc3e21-7c75-4507-8414-11dde227bc60.mock.pstmn.io/test'})
+    
+        // console.log(data.data)
+  return data.data
+}
+    var res = getdata();
+    console.log(res);
+    getdata();
+
+    </script>
+</body>
+</html>
