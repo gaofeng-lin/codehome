@@ -24,18 +24,18 @@ import { JSONSchema7 } from "json-schema";
 // };
 
 
-async function getdata() {
-  let data;
-  await axios({url:'https://63cc3e21-7c75-4507-8414-11dde227bc60.mock.pstmn.io/test'}).then(
-    (res)=>{
-      data = res.data;
-    }
-  ) .catch(err=>{
-    console.log(err)
-  });
+// async function getdata() {
+//   let data;
+//   await axios({url:'https://63cc3e21-7c75-4507-8414-11dde227bc60.mock.pstmn.io/test'}).then(
+//     (res)=>{
+//       data = res.data;
+//     }
+//   ) .catch(err=>{
+//     console.log(err)
+//   });
 
-  return data;
-}
+//   return data;
+// }
 
 // const schema = {
 //   "title": "Test form",
@@ -54,10 +54,39 @@ async function getdata() {
 // };
 
 
+interface isState {
+  schema: JSONSchema7
+}
 
 
+class App extends React.Component <any, isState> {
 
-class App extends React.Component{
+  constructor(props:any) {
+    super(props);
+    this.state = {
+      schema:{
+        "title": "Test form",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "number"
+          },
+          "money": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+
+  componentDidMount() {
+    axios({url:'https://63cc3e21-7c75-4507-8414-11dde227bc60.mock.pstmn.io/test'}).then((data) => {
+      this.setState({schema:data.data});
+    })
+  }
 
   // schema = axios({url:'https://63cc3e21-7c75-4507-8414-11dde227bc60.mock.pstmn.io/test'})
   // var tmp = JSON.parse(schema)
@@ -80,9 +109,7 @@ class App extends React.Component{
 
     render(){
       return(
-        <Form schema = {getdata().then(res =>{
-            return res
-        }) as JSONSchema7}
+        <Form schema = {this.state.schema}
         ></Form>
       )
     }

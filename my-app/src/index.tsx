@@ -36,10 +36,10 @@ const schema :any = {
 };
 
 root.render(
-  <React.StrictMode>
-    {/* <Form schema={schema} /> */}
+  // <React.StrictMode>
+
     <App ></App>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 
