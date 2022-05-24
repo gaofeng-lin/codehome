@@ -29,8 +29,8 @@ func DrawValueNameFromPareSelfFile(file_path string) map[string]string {
 		}
 		str :=string(data)
 		// fmt.Println(strings.TrimSpace(str))
-		reg :=regexp.MustCompile(`[\S]+`)
-
+		reg := regexp.MustCompile(`[\S]+`)
+		// reg1 := regexp.MustCompile(`[]+`)
 		if (strings.Contains(str,"#")){
 			continue
 		}
@@ -38,7 +38,8 @@ func DrawValueNameFromPareSelfFile(file_path string) map[string]string {
 		if(len(str)==0){
 			break
 		}
-		res_map[reg.FindAllString(str,-1)[1]]=reg.FindAllString(str,-1)[0]
+		value := strings.Split(reg.FindAllString(str,-1)[3], ";")
+		res_map[reg.FindAllString(str,-1)[1]] = value[0]
 	
 		}
 	return res_map
