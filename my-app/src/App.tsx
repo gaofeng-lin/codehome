@@ -55,8 +55,12 @@ import { JSONSchema7 } from "json-schema";
 
 
 interface isState {
-  schema: JSONSchema7
+  schema: JSONSchema7,
+  body: BodyInit
+
 }
+
+
 
 
 class App extends React.Component <any, isState> {
@@ -78,8 +82,11 @@ class App extends React.Component <any, isState> {
             "type": "string"
           }
         }
-      }
+      },
+      body: "hello"
+  
     }
+
   }
 
   componentDidMount() {
@@ -88,27 +95,31 @@ class App extends React.Component <any, isState> {
     })
   }
 
-  // schema = axios({url:'https://63cc3e21-7c75-4507-8414-11dde227bc60.mock.pstmn.io/test'})
-  // var tmp = JSON.parse(schema)
 
 
-  // render(){
 
+//   onSubmit=()=>{
+//     let queryStringRequest = new Request('http://127.0.0.1:8000/api/test', {
+//       method: 'post',
+//       body: this.state.body
+//     })
+//     fetch(queryStringRequest).then(res => {
+//           console.log(res)
+//     })
+//  }
 
-  //   return(
-  //     <Form schema = { axios({url:'https://63cc3e21-7c75-4507-8414-11dde227bc60.mock.pstmn.io/test'}).then(
-  //       (res)=>{
-  //         console.log(res.data)
-  //         return res.data
-  //       }
-  //     ) .catch(err=>{
-  //       console.log(err)
-  //     }) as JSONSchema7}  />
-  //   )
-  // }
     onSubmit=()=>{
-      console.log("hello")
+      axios({
+        headers: {
+          "Content-Type": "application/octet-stream",
+          "Access-Control-Allow-Origin": "*",
+        },
+        url: 'http://127.0.0.1:8000/api/test',
+        method: 'POST',
+        data: this.state.schema
+      })
     }
+
 
     render(){
       return(
@@ -122,12 +133,5 @@ class App extends React.Component <any, isState> {
 }
 
 
-// function App() {
-//   return (
-//     <div className="App">
-//       hello,world
-//     </div>
-//   );
-// }
 
 export default App;
