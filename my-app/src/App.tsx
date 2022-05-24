@@ -108,24 +108,24 @@ class App extends React.Component <any, isState> {
 //     })
 //  }
 
-    onSubmit=()=>{
-      axios({
-        headers: {
-          "Content-Type": "application/octet-stream",
-          "Access-Control-Allow-Origin": "*",
-        },
-        url: 'http://127.0.0.1:8000/api/test',
-        method: 'POST',
-        data: this.state.schema
-      })
-    }
+    // onSubmit=()=>{
+    //   axios({
+    //     headers: {
+    //       "Content-Type": "application/octet-stream",
+    //       "Access-Control-Allow-Origin": "*",
+    //     },
+    //     url: 'http://127.0.0.1:8000/api/test',
+    //     method: 'POST',
+    //     data: this.state.schema
+    //   })
+    // }
 
 
     render(){
       return(
         <Form schema = {this.state.schema} 
         >
-          <button onClick={this.onSubmit}>计算</button>
+          {/* <button onClick={this.onSubmit}>计算</button> */}
         </Form>
       )
     }
