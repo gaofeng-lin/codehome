@@ -1,6 +1,6 @@
 package main
 
-type Rep struct {
+type Repo struct {
 	DBSettings struct {
 		Dbname   string `json:"dbname"`
 		Host     string `json:"host"`

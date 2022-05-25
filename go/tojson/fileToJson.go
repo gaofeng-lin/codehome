@@ -1,4 +1,4 @@
-package tojson
+package main
 
 import (
 	"bufio"
@@ -14,6 +14,7 @@ import (
 	"regexp"
 	"encoding/json"
 	"log"
+	"os/exec"
 	// "bytes"
 	// "StringEscapeUtils"
 
@@ -54,7 +55,8 @@ func DrawValueNameFromPareSelfFile(file_path string) map[string]string {
 
 func writeLog(msg string) {
 
-	fileName := "C:/Tools/codehome/go/tojson/test4.json"
+	// fileName := "C:/Tools/codehome/go/tojson/test4.json"
+	fileName := "./test4.json"
 	fileHandle, err := os.OpenFile(fileName, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		log.Println("open file error :", err)
@@ -87,9 +89,6 @@ func writeLog(msg string) {
 func main() {
 	map_newvalue_type :=DrawValueNameFromPareSelfFile("C:\\Users\\76585\\Desktop\\cfd_para_self.txt")
 
-	// for key,val := range map_newvalue_type{
-	// 	fmt.Println(key,val)
-	// }
 
  
     //编码成json
@@ -123,6 +122,12 @@ func main() {
     fmt.Println("result = ", string(result))
 	// fmt.Println(bf.String())
 	writeLog(string(result))
+
+	// gojson -input="test4.json" -name=Repo -o="test4.go"
+	str :=`gojson -input="test4.json" -pkg=hyparser -name=CFDParaSelfHYPara -o="test4.go"`
+	command := exec.Command("sh", "-c", str)
+	bytes, _ := command.Output()
+	fmt.Println(string(bytes))
 }
 
 
