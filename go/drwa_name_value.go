@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"encoding/json"
 	"fmt"
 	"strings"
 
@@ -12,7 +13,6 @@ import (
 	// "strings"
 	"io"
 	"regexp"
-
 )
 
 func DrawValueNameFromPareSelfFile(file_path string) map[string]string {
@@ -38,7 +38,7 @@ func DrawValueNameFromPareSelfFile(file_path string) map[string]string {
 		if(len(str)==0){
 			break
 		}
-		value := strings.Split(reg.FindAllString(str,-1)[3], ";")
+		value := strings.Split(reg.FindAllString(str,-1)[0], ";")
 		res_map[reg.FindAllString(str,-1)[1]] = value[0]
 	
 		}
@@ -52,5 +52,9 @@ func main() {
 	for key,val := range map_newvalue_type{
 		fmt.Println(key,val)
 	}
+
+	marshal, _ := json.MarshalIndent(map_newvalue_type, "", " ")
+
+	fmt.Println(string(marshal))
 
 }
