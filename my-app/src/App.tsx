@@ -20,9 +20,22 @@ interface isState {
 
 
 const schema = {
-  type: "string"
+  "type": "object",
+  "properties": {
+    "湍流模型": {
+      "type": "string"
+    },
+    "粘性控制": {
+      "type": "string"
+    },
+    "最大迭代步数": {
+      "type": "number"
+    }
+  }
 };
-const onSubmit = ({formData} ) => console.log("Data submitted: ",  formData);
+const onSubmit = ({formData} ) => {
+  console.log("Data submitted: ",  formData);
+}
 
 class App extends React.Component <any, isState> {
 
