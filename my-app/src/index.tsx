@@ -19,21 +19,21 @@ const root = ReactDOM.createRoot(
 
 
 
-const schema :any = {
-  title: "Test form",
-  type: "object",
-  properties: {
-    name: {
-      type: "string"
-    },
-    age: {
-      type: "number"
-    },
-    money: {
-      type: "string"
-    }
-  }
-};
+// const schema :any = {
+//   title: "Test form",
+//   type: "object",
+//   properties: {
+//     name: {
+//       type: "string"
+//     },
+//     age: {
+//       type: "number"
+//     },
+//     money: {
+//       type: "string"
+//     }
+//   }
+// };
 
 root.render(
   // <React.StrictMode>
