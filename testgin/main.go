@@ -1,8 +1,11 @@
 package main
 import "testgin/router"
+import "testgin/cors"
+
 func main(){
 
 //初始化go-gin，启动webserver
 r := router.InitRouter()
-_ = r.Run(":8000")
+r.Use(cors.Cors())
+_ = r.Run(":8100")
 }
