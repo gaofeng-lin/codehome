@@ -56,7 +56,7 @@ import { JSONSchema7 } from "json-schema";
 
 interface isState {
   schema: JSONSchema7,
-  body: BodyInit
+  formData: JSON
 
 }
 
@@ -69,21 +69,39 @@ class App extends React.Component <any, isState> {
     super(props);
     this.state = {
       schema:{
-        "title": "Test form",
+        "title": "A registration form",
+        "description": "A simple form example.",
         "type": "object",
+        "required": [
+          "firstName",
+          "lastName"
+        ],
         "properties": {
-          "name": {
-            "type": "string"
+          "firstName": {
+            "type": "string",
+            "title": "First name",
+            "default": "Chuck"
           },
-          "age": {
-            "type": "number"
+          "lastName": {
+            "type": "string",
+            "title": "Last name"
           },
-          "money": {
-            "type": "string"
+          "telephone": {
+            "type": "string",
+            "title": "Telephone",
+            "minLength": 10
           }
         }
       },
-      body: "hello"
+      formData:{
+        "firstName": "A",
+        "lastName": "志有",
+        "age": 75,
+        "bio": "Roundhouse kicking asses since 1940",
+        "password": "noneed",
+        "telephone": "15308085505"
+      }
+
   
     }
 
@@ -96,17 +114,6 @@ class App extends React.Component <any, isState> {
   }
 
 
-
-
-//   onSubmit=()=>{
-//     let queryStringRequest = new Request('http://127.0.0.1:8000/api/test', {
-//       method: 'post',
-//       body: this.state.body
-//     })
-//     fetch(queryStringRequest).then(res => {
-//           console.log(res)
-//     })
-//  }
 
     onSubmit=()=>{
       axios({
