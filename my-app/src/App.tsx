@@ -60,7 +60,7 @@ interface isState {
 
 }
 
-
+const formData = "a";
 
 
 class App extends React.Component <any, isState> {
@@ -98,15 +98,15 @@ class App extends React.Component <any, isState> {
 
 
 
-//   onSubmit=()=>{
-//     let queryStringRequest = new Request('http://127.0.0.1:8000/api/test', {
-//       method: 'post',
-//       body: this.state.body
-//     })
-//     fetch(queryStringRequest).then(res => {
-//           console.log(res)
-//     })
-//  }
+  onSubmit=()=>{
+    let queryStringRequest = new Request('http://127.0.0.1:8000/api/test', {
+      method: 'post',
+      body: this.state.body
+    })
+    fetch(queryStringRequest).then(res => {
+          console.log(res)
+    })
+ }
 
     // onSubmit=()=>{
     //   axios({
@@ -123,9 +123,9 @@ class App extends React.Component <any, isState> {
 
     render(){
       return(
-        <Form schema = {this.state.schema} 
+        <Form schema = {this.state.schema}  formData={formData}
         >
-          {/* <button onClick={this.onSubmit}>计算</button> */}
+          <button onClick={this.onSubmit}>计算</button>
         </Form>
       )
     }
