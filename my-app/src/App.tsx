@@ -98,27 +98,27 @@ class App extends React.Component <any, isState> {
 
 
 
-  onSubmit=()=>{
-    let queryStringRequest = new Request('http://127.0.0.1:8000/api/test', {
-      method: 'post',
-      body: this.state.body
-    })
-    fetch(queryStringRequest).then(res => {
-          console.log(res)
-    })
- }
+//   onSubmit=()=>{
+//     let queryStringRequest = new Request('http://127.0.0.1:8000/api/test', {
+//       method: 'post',
+//       body: this.state.body
+//     })
+//     fetch(queryStringRequest).then(res => {
+//           console.log(res)
+//     })
+//  }
 
-    // onSubmit=()=>{
-    //   axios({
-    //     headers: {
-    //       "Content-Type": "application/octet-stream",
-    //       "Access-Control-Allow-Origin": "*",
-    //     },
-    //     url: 'http://127.0.0.1:8000/api/test',
-    //     method: 'POST',
-    //     data: this.state.schema
-    //   })
-    // }
+    onSubmit=()=>{
+      axios({
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/octet-stream",
+        },
+        url: 'http://localhost:8100/api/test',
+        method: 'POST',
+        data: this.state.schema
+      })
+    }
 
 
     render(){
