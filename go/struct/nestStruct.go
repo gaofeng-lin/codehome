@@ -80,13 +80,7 @@ func (in Instance)Field(name string) (reflect.Value,error) {
 	}
 }
 
-// func (in *Instance) SetStruct(name string, p2 interface{}) {
-// 	if i,ok := in.index[name];ok{
-// 		// in.instance.Field(i).SetStruct(value)
-// 		in.instance.Field(i).SetMapIndex()
-// 		// in.instance.Field(i).Se
-// 	}
-// }
+
 
 func (in *Instance) SetStruct(name string, resp map[string]string) {
 	if i,ok := in.index[name];ok{
@@ -151,42 +145,25 @@ func main() {
 	fmt.Printf("%T\n",p.Addr())
 	fmt.Printf("%+v\n",p.Addr())
 
-	// pe1 := NewBuilder().
-	// 	AddString("Name").
-	// 	AddInt64("Age").Build()
-	// p1 := pe1.New()
 
-	// p1.SetInt64("Age", 32)
-
-	// pe2 := NewBuilder().
-	// AddString("Type1").Build()
-	// p2 := pe2.New()
 
 
 	tmp := make(map[string]string)
 
-	tmp["你好"] = "object"
-	tmp["我日"] = "object1"
+	tmp["type1"] = "object1"
 	tmp["type2"] = "object2"
+	tmp["type3"] = "object3"
 
-	// p2.SetString("Type1", "object")
-	// p.SetString("Typet", "test1")
+
 	p.SetStruct("Typet",tmp)
-	// p.SetStruct("Name", tmp)
+
 
 	fmt.Printf("%T\n",p)
 	fmt.Printf("%T\n",p.Interface())
 	fmt.Printf("%+v\n",p.Interface())
 	fmt.Printf("%T\n",p.Addr())
 	fmt.Printf("%+v\n",p.Addr())
-	// fmt.Println(reflect.ValueOf(p2))
-	
-	// p.SetStruct("Typet",p2.Interface())
 
-	
-	// fmt.Printf("%+v\n",p.Interface())
-	// fmt.Printf("%T，%+v\n",p.Interface(),p.Interface())
-	// fmt.Printf("%T，%+v\n",p.Addr(),p.Addr())
 
 
 }
