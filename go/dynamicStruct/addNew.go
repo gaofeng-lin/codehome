@@ -1,48 +1,62 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"log"
 
-	"github.com/ompluscator/dynamic-struct"
+	"github.com/goldeneggg/structil/dynamicstruct/decoder"
 )
 
 func main() {
-	instance := dynamicstruct.NewStruct().
-		AddField("Integer", 0, `json:"int"`).
-		AddField("Text", "", `json:"someText"`).
-		AddField("Float", 0.0, `json:"double"`).
-		AddField("Boolean", false, "").
-		AddField("Slice", []int{}, "").
-		AddField("Anonymous", "", `json:"-"`).
-		Build().
-		New()
-
-	data := []byte(`
+	unknownJSON := []byte(`
 {
-    "int": 123,
-    "someText": "example",
-    "double": 123.45,
-    "Boolean": true,
-    "Slice": [1, 2, 3],
-    "Anonymous": "avoid to read"
+	"string_field":"かきくけこ",
+	"int_field":45678,
+	"bool_field":false,
+	"object_field":{
+		"id":12,
+		"name":"the name",
+		"nested_object_field": {
+			"address": "Tokyo",
+			"is_manager": true
+		}
+	},
+	"array_string_field":[
+		"array_str_1",
+		"array_str_2"
+	],
+	"array_struct_field":[
+		{
+			"kkk":"kkk1",
+			"vvvv":"vvv1"
+		},
+		{
+			"kkk":"kkk2",
+			"vvvv":"vvv2"
+		}
+	],
+	"null_field":null
 }
 `)
 
-	err := json.Unmarshal(data, &instance)
-	if err != nil {
-		log.Fatal(err)
-	}
+  // create `Decoder` from JSON
+  dec, err := decoder.FromJSON(unknownJSON)
+  if err != nil {
+    panic(err)
+  }
 
-	fmt.Println("%v",instance)
+  // - If `nest` is true, nested object attributes will be also decoded to struct recursively
+  // - If `nest` is false, nested object attributes will be decoded to `map[string]interface{}`
+  nest := true
 
-	data, err = json.Marshal(instance)
-	if err != nil {
-		log.Fatal(err)
-	}
+  // - If `useTag` is true, JSON Struct tags are defined
+  useTag := true
 
-	fmt.Println(string(data))
-	// Out:
-	// {"int":123,"someText":"example","double":123.45,"Boolean":true,"Slice":[1,2,3]}
+  // create `DynamicStruct` from `Decoder`
+  ds, err := dec.DynamicStruct(nest, useTag)
+  if err != nil {
+    panic(err)
+  }
+
+  // print struct definition from `DynamicStruct`
+  fmt.Println(ds.Definition())
 }
