@@ -38,7 +38,8 @@ func DrawValueNameFromPareSelfFile(file_path string) map[string]string {
 		if(len(str)==0){
 			break
 		}
-		value := strings.Split(reg.FindAllString(str,-1)[0], ";")
+		// reg.FindAllString(str,-1)[3] 中括号里面的取值。0表示变量类型，3表示变量值。下面的value[0]不不动
+		value := strings.Split(reg.FindAllString(str,-1)[3], ";")
 		res_map[reg.FindAllString(str,-1)[1]] = value[0]
 	
 		}

@@ -2,14 +2,19 @@ package main
 
 
 import (
-	"errors"
-	"reflect"
-	"fmt"
+        "fmt"
+        "reflect"
+		"errors"
 )
-// 构造器
 
+// type Orange struct {
+//         Size int
+// }
 
-
+type Response struct {
+	Type       string              	  `json:"type"`
+	Properties map[string]Instance `json:"properties"`
+}
 
 type Builder struct {
 	// 用于存储属性字段
@@ -124,46 +129,61 @@ func (i *Instance) Addr() interface{} {
 	return i.instance.Addr().Interface()
 }
 
-
+func (in *Response) SetSpecialStruct(value map[string]string) {
+	tmp := reflect.ValueOf(in)
+	tmp.Elem().FieldByName("Properties").Set(reflect.ValueOf(value))
+}
 
 func main() {
+
+    a := Response{}
+    v := reflect.ValueOf(a)
+    // fmt.Println("v:", v)
+    // fmt.Println("v Type:", v.Type())
+    // fmt.Println("v CanSet:", v.CanSet())
+    v = reflect.ValueOf(&a)
+    // fmt.Println("v:", v)
+    // fmt.Println("v Type:", v.Type())
+    // fmt.Println("v CanSet:", v.CanSet())
+    //element
+    v = v.Elem()
+    size := v.FieldByName("Type")
+    // fmt.Println("size CanSet:", size.CanSet())
+    size.SetString("88")
+    fmt.Println("after set:", v)
+	fmt.Println(a)
+	// --------------------------------------------
+	// --------------------------------------------
 	pe := NewBuilder().
-		AddString("Name").
-		AddInt64("Age").
-		AddStruct("Typet").
-		Build()
+	AddString("Name").
+	AddInt64("Age").
+	AddStruct("Typet").
+	Build()
 	p := pe.New()
 	p.SetString("Name","你好")
 	p.SetInt64("Age",32)
-	// fmt.Printf("%T\n",p)
-	// fmt.Printf("%T\n",p.Interface())
-	// fmt.Printf("%+v\n",p.Interface())
-	// fmt.Printf("%T\n",p.Addr())
-	// fmt.Printf("%+v\n",p.Addr())
-
 
 
 
 	tmp := make(map[string]string)
 
-	tmp["type1"] = "object1"
-	tmp["type2"] = "object2"
-	tmp["type3"] = "object3"
+	tmp["湍流模型"] = "object1"
+	tmp["最大迭代步数"] = "object2"
+	tmp["粘性控制"] = "object3"
 
 
 	p.SetStruct("Typet",tmp)
 
+	// tmp1 := make(map[string]Instance)
+	
 
-	// fmt.Printf("%T\n",p)
-	// fmt.Printf("%T\n",p.Interface())
-	fmt.Printf("%+v\n",p.Interface())
-	// fmt.Printf("%T\n",p.Addr())
-	// fmt.Printf("%+v\n",p.Addr())
+	// setprpo := v.FieldByName("Properties")
+	// setprpo.SetSpecialStruct(p)
+	a.SetSpecialStruct(tmp)
 
-	t1 := reflect.ValueOf(p.Interface())
-	fmt.Println("*************************")
-	fmt.Println(t1)
+	fmt.Println(a)
 
 
+	
 
 }
