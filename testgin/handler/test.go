@@ -4,6 +4,7 @@ import (
 "io/ioutil"
 "net/http"
 "fmt"
+// "encoding/json"
 )
 func Test(context *gin.Context) {
 
@@ -12,6 +13,8 @@ msg, _ := ioutil.ReadAll(context.Request.Body)
 str := string(msg)
 
 fmt.Println(str)
+
+
 
 context.Header("Access-Control-Allow-Origin", "*")
 context.Header("Access-Control-Allow-Headers", "*")

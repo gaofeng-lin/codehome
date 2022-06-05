@@ -28,7 +28,15 @@ interface isState {
 //     }
 //   }
 // };
-const onSubmit = ({formData} ) => {
+const onSubmit = ({formData}) => {
+
+  // var jsonobj = JSON.parse(formData);
+  console.log(formData)
+
+  var obj = {'properties':''};
+  obj.properties = formData;
+  console.log(obj)
+
   axios({
     headers: {
       "Content-Type": "application/octet-stream",
@@ -36,7 +44,7 @@ const onSubmit = ({formData} ) => {
     },
     url: 'http://127.0.0.1:8100/api/test',
     method: 'POST',
-    data: formData
+    data: obj
   })
 }
 
@@ -65,12 +73,12 @@ class App extends React.Component <any, isState> {
 
   }
 
-  componentDidMount() {
-    axios({url:'https://63cc3e21-7c75-4507-8414-11dde227bc60.mock.pstmn.io/test'}).then((data) => {
-      console.log(data.data);
-      this.setState({schema:data.data});
-    })
-  }
+  // componentDidMount() {
+  //   axios({url:'http://localhost:5000/api/v1/books'}).then((data) => {
+  //     console.log(data.data);
+  //     this.setState({schema:data.data});
+  //   })
+  // }
 
 
     render(){
