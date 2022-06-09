@@ -61,7 +61,7 @@ class Merge {
             if (i == mid + 1) {
                 // 左半边数组已全部被合并
                 nums[p] = temp[j++];
-            } else if (j == hi) {
+            } else if (j == hi + 1) {
                 // 右半边数组已全部被合并
                 nums[p] = temp[i++];
             } else if (temp[i] > temp[j]) {
