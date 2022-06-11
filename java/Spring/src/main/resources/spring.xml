@@ -4,19 +4,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="student" class="org.example.Student">
-<!--        <constructor-arg name="id" value="2"></constructor-arg>-->
-<!--        <constructor-arg name="name" value="李四"></constructor-arg>-->
-<!--        <constructor-arg name="grade" ref="grade"></constructor-arg>-->
-        <property name="id" value="1"></property>
-        <property name="name" value="张三"></property>
-        <property name="grade" ref="grade"></property>
-    </bean>
-    <bean id="grade" class="org.example.Grade">
-<!--        <constructor-arg name="gradeId" value="4"></constructor-arg>-->
-<!--        <constructor-arg name="gradeName" value="四年级"></constructor-arg>-->
-        <property name="gradeId" value="3"></property>
-        <property name="gradeName" value="三年级"></property>
+    <bean id="employee" class="org.innerbean.Employee">
+        <property name="empNo" value="001"></property>
+        <property name="empName" value="小王"></property>
+        <property name="dept">
+            <!--内部 Bean-->
+            <bean class="org.innerbean.Dept">
+                <property name="deptNo" value="004"></property>
+                <property name="deptName" value="技术部"></property>
+            </bean>
+        </property>
     </bean>
 
 </beans>
