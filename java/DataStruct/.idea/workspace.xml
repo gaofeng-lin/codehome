@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c16aaff4-ad9d-4589-aa58-3388ae9cda48" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mergesort/MergeSoftVtwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mergesort/MergeSoftVtwo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servlet/Servlet.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servlet/out/artifacts/Servlet_war_exploded/WEB-INF/classes/MyServlet1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servlet/out/artifacts/Servlet_war_exploded/WEB-INF/lib/servlet-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servlet/out/artifacts/Servlet_war_exploded/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servlet/out/artifacts/Servlet_war_exploded/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servlet/src/MyServlet1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servlet/web/WEB-INF/classes/MyServlet1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servlet/web/WEB-INF/lib/servlet-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servlet/web/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servlet/web/index.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -496,7 +506,8 @@
       <workItem from="1654323308853" duration="142000" />
       <workItem from="1654490483890" duration="3095000" />
       <workItem from="1654751913689" duration="2129000" />
-      <workItem from="1654787135226" duration="794000" />
+      <workItem from="1654787135226" duration="1581000" />
+      <workItem from="1654910181719" duration="38000" />
     </task>
     <servers />
   </component>

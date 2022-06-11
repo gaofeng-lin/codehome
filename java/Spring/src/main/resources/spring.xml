@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="student" class="org.example.Student">
+<!--        <constructor-arg name="id" value="2"></constructor-arg>-->
+<!--        <constructor-arg name="name" value="李四"></constructor-arg>-->
+<!--        <constructor-arg name="grade" ref="grade"></constructor-arg>-->
+        <property name="id" value="1"></property>
+        <property name="name" value="张三"></property>
+        <property name="grade" ref="grade"></property>
+    </bean>
+    <bean id="grade" class="org.example.Grade">
+<!--        <constructor-arg name="gradeId" value="4"></constructor-arg>-->
+<!--        <constructor-arg name="gradeName" value="四年级"></constructor-arg>-->
+        <property name="gradeId" value="3"></property>
+        <property name="gradeName" value="三年级"></property>
+    </bean>
+
+</beans>
