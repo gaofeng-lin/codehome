@@ -1,52 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="javacollection" class="org.innercollection.JavaCollection">
-        <property name="courses">
-            <array>
-                <value>Java</value>
-                <value>PHP</value>
-                <value>C++</value>
-            </array>
-        </property>
-        <!--List 类型-->
-        <property name="list">
-            <list>
-                <value>张三</value>
-                <value>李四</value>
-                <value>王五</value>
-                <value>赵六</value>
-            </list>
-        </property>
-        <!--Map 类型-->
-        <property name="maps">
-            <map>
-                <entry key="JAVA" value="java"></entry>
-                <entry key="PHP" value="php"></entry>
-            </map>
-        </property>
-        <!--Set 类型-->
-        <property name="sets">
-            <set>
-                <value>MySQL</value>
-                <value>Redis</value>
-            </set>
-        </property>
-    </bean>
-
-<!--    <bean id="employee" class="org.innerbean.Employee">-->
-<!--        <property name="empNo" value="001"></property>-->
-<!--        <property name="empName" value="小王"></property>-->
-<!--        <property name="dept">-->
-<!--            &lt;!&ndash;内部 Bean&ndash;&gt;-->
-<!--            <bean class="org.innerbean.Dept">-->
-<!--                <property name="deptNo" value="004"></property>-->
-<!--                <property name="deptName" value="技术部"></property>-->
-<!--            </bean>-->
-<!--        </property>-->
-<!--    </bean>-->
+    <context:component-scan base-package="test"></context:component-scan>
 
 </beans>
