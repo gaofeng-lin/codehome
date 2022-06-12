@@ -1,4 +1,4 @@
-package Tmp3;
+package Leetcode_stack;
 
 import java.util.*;
 public class Tmp3{
