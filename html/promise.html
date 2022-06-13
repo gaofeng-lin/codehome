@@ -7,6 +7,46 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        var isLiForget = false; //给一个布尔值判断小丽有没有忘记小花的生日
+        var getCloth = new Promise(function(resolve,reject){
+            if(!isLiForget){ //没忘记
+                var cloth = {
+                    color:'red',
+                    price:'$120'
+                };
+                resolve(cloth); // 得到衣服
+            }else{
+                var err = new Error("forgot the promise"); //忘记了
+                reject(err);
+            }
+        });
+ 
+//之后就是调用Promise了
+//声明一个买鞋的函数，里面返回promise
+        var buyShoes = function(cloth){
+            var shoes = {
+                color:"white",
+                brand:"nike"
+            }
+            var msg = {
+                message:"I bougth a pair of "+shoes.color+" "+shoes.brand+"shoes to match my "+cloth.color+" cloth.",
+        	shoes:shoes,
+        	cloth:cloth
+        	}
+            return Promise.resolve(msg);
+        }
+        var testFn = function(){
+            getCloth
+              .then(buyShoes)
+              .then(function(fulfilled){
+                console.log(fulfilled);
+            }).catch(function(rejected){
+                console.log(rejected.message);
+            });
+        }
+        testFn();
+
+    </script>
 </body>
 </html>

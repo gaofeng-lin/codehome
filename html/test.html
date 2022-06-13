@@ -8,14 +8,23 @@
 </head>
 <body>
   <script>
-function timeout(ms) {
-  return new Promise((resolve, reject) => {
-    setTimeout(resolve, ms, 'done');
-  });
-}
-timeout(100).then((value) => {
-  console.log(value);
+      const data = [];
+  // for (let i = 0; i < 3; i += 1) {
+  //   data.push({
+  //     key: i,
+  //     date: '2014-12-24 23:12:00',
+  //     name: 'This is production name',
+  //     upgradeNum: 'Upgraded: 56',
+  //   });
+  // }
+  // data[0] = [{'key':123,'data':'2014-12-24 23:12:00'},{'key':321, 'data':'2014-12-24 23:12:00'}];
+  data.push({
+    paramName: '参数1', 
+    varType:'int', 
+    varName:'paraone', 
+    varValue:100,
 });
+  console.log(data)
   </script>
 </body>
 </html>
