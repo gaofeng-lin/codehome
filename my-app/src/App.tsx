@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './App.css';
 import Form from "@rjsf/core";
 import axios from 'axios';
@@ -28,67 +28,101 @@ interface isState {
 //     }
 //   }
 // };
-const onSubmit = ({formData}) => {
 
-  // var jsonobj = JSON.parse(formData);
-  console.log(formData)
 
-  var obj = {'properties':''};
-  obj.properties = formData;
-  console.log(obj)
-
-  axios({
-    headers: {
-      "Content-Type": "application/octet-stream",
-      "Access-Control-Allow-Origin": "*",
-    },
-    url: 'http://127.0.0.1:8100/api/test',
-    method: 'POST',
-    data: obj
-  })
+const testdata = {
+  "参数1": "hello",
+  "年龄": 12,
+  "money": 100234
 }
 
 
-class App extends React.Component <any, isState> {
+const App = () => {
 
-  constructor(props:any) {
-    super(props);
-    this.state = {
-      schema:{
-        "title": "Test form",
-        "type": "object",
-        "properties": {
-          "name123": {
-            "type": "string"
-          },
-          "age": {
-            "type": "number"
-          },
-          "money": {
-            "type": "string"
-          }
-        }
+  const schema = {
+    "title": "Test form",
+    "type": "object",
+    "properties": {
+      "参数1": {
+        "type": "string"
+      },
+      "年龄": {
+        "type": "number"
+      },
+      "money": {
+        "type": "number"
       }
     }
-
   }
+  const [formData, setFormData] = useState(testdata);
+  const onSubmit = () => {
 
-  // componentDidMount() {
-  //   axios({url:'http://localhost:5000/api/v1/books'}).then((data) => {
-  //     console.log(data.data);
-  //     this.setState({schema:data.data});
-  //   })
-  // }
-
-
-    render(){
-      return(
-  <Form schema={this.state.schema as JSONSchema7}
-        onSubmit={onSubmit} />
-      )
-    }
-
+    // var jsonobj = JSON.parse(formData);
+    console.log(formData)
+  
+    var obj = {'properties': null};
+    obj.properties = formData;
+    console.log(obj)
+  
+    axios({
+      headers: {
+        "Content-Type": "application/octet-stream",
+        "Access-Control-Allow-Origin": "*",
+      },
+      url: 'http://127.0.0.1:8100/api/test',
+      method: 'POST',
+      data: obj
+    })
+  }
+  return(
+    <Form schema={schema as JSONSchema7} formData = {formData}
+      onChange={e => setFormData(e.formData)}
+      onSubmit={onSubmit} />
+  )
 }
+
+// class App extends React.Component <any, isState> {
+
+//   constructor(props:any) {
+//     super(props);
+//     this.state = {
+//       schema:{
+//         "title": "Test form",
+//         "type": "object",
+//         "properties": {
+//           "参数1": {
+//             "type": "string"
+//           },
+//           "年龄": {
+//             "type": "number"
+//           },
+//           "money": {
+//             "type": "number"
+//           }
+//         }
+//       }
+//     }
+
+//   }
+
+//   // componentDidMount() {
+//   //   axios({url:'http://localhost:5000/api/v1/books'}).then((data) => {
+//   //     console.log(data.data);
+//   //     this.setState({schema:data.data});
+//   //   })
+//   // }
+
+
+//     render(){
+//       const [formData, setFormData] = useState(testdata);
+//       return(
+//   <Form schema={this.state.schema as JSONSchema7} formData = {formData}
+//       onChange={e => setFormData(e.formData)}
+//         onSubmit={onSubmit} />
+//       )
+//     }
+
+// }
 
 
 
