@@ -6,6 +6,6 @@ public class AbstractFactoryPatternDemo {
 
         Shape shape1 = shapeFactory.getShape("SQUARE");
         shape1.draw();
-        
+
     }
 }
