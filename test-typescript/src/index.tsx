@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import Game from './App';
 import reportWebVitals from './reportWebVitals';
-import CounterComponent from './components/Counter';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,8 +10,8 @@ const root = ReactDOM.createRoot(
 root.render(
 
   
-    // <App />
-    <CounterComponent name = "林高锋" ></CounterComponent>
+    <Game />
+    // <CounterComponent name = "林高锋" ></CounterComponent>
 
 );
 
