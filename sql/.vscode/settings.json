@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "121.37.93.92",
+            "port": 3306,
+            "askForPassword": true,
+            "driver": "MySQL",
+            "name": "教研室私有云",
+            "database": "test",
+            "username": "root"
+        }
+    ]
+}
