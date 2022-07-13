@@ -41,6 +41,7 @@ DECLARE s int DEFAULT 0;
 declare p_t_id bigint(20);
 declare varmodule int DEFAULT 0;
 declare varparam int DEFAULT 0; 
+declare m_name varchar(255);
 
 declare pid cursor for select product_id from products;
 DECLARE CONTINUE HANDLER FOR NOT FOUND SET s=1;
@@ -50,11 +51,12 @@ fetch pid into p_t_id;
 while s<>1 do
 
 while varmodule<3 do
+set m_name=rand_string(2);
 
 while varparam<10 do
 
 insert into person_param (product_id, module_name, param_name, var_type, var_name, var_value, is_activated, compute_value) 
-values(p_t_id,concat('模块','acv'),rand_string(3),'int',rand_string(6),'200',1,'ok');
+values(p_t_id,concat('模块',m_name),rand_string(3),'int',rand_string(6),'200',1,'ok');
 
 set varparam=varparam+1;
 end while;
