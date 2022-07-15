@@ -31,7 +31,7 @@ interface isState {
 
 
 const testdata = {
-  "参数1": "hello",
+  // "参数1": "hello",
   "年龄": 12,
   "money": 100234
 }
@@ -44,7 +44,9 @@ const App = () => {
     "type": "object",
     "properties": {
       "参数1": {
-        "type": "string"
+        "enum":[1 , 2 , 3],
+        "module_name":"haha",
+        "type": "number"
       },
       "年龄": {
         "type": "number"
