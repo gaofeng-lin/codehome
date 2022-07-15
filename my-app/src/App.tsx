@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import './App.css';
-import Form from "@rjsf/core";
+import Form from "@rjsf/antd";
 import axios from 'axios';
 import { JSONSchema7 } from "json-schema";
 
@@ -10,6 +10,7 @@ import { JSONSchema7 } from "json-schema";
 interface isState {
   schema: JSONSchema7
 }
+
 
 
 
