@@ -4,67 +4,55 @@ import (
 	// "crypto/ecdsa"
 	"fmt"
 	// "reflect"
-	"strings"
-	"strconv"
+	// "strings"
+	// "strconv"
+	"sort"
+	"reflect"
 )
-
-func main() {
-	//第一种方法
-	// s := make(map[interface{}]interface{})
-	// s["a"] = "a"
-	// s["b"] = "b"
-	// s[1] = 1
-	
-	// b := make(map[interface{}]interface{})
-	// b["a"] = "ba"
-	// b["e"] = 45
-	// b[1] = "str"
-	// b[2] = 2
-	// b["s"] = s
-	// fmt.Println(b)
-	// fmt.Println(b["s"].(map[interface{}]interface{})[1])
-	// tmp_map := make(map[string]interface{})
-	// tmp_slice := make([]interface{}, 0)
-	// tmp_slice = append(tmp_slice,1,2,3)
-	// tmp_map["enum"] = tmp_slice
-	// tmp_map["type"] = "string"
-
-	// res_map := make(map[string]interface{})
-	// res_map["参数1"] = tmp_map
-	// res_map["参数2"] ="number"
-	// res_map["参数3"] = "number"
-	// // fmt.Println(res_map)
-
-	// for _, val := range res_map {
-	// 	// fmt.Println(key)
-	// 	if reflect.TypeOf(val).Kind() == reflect.Map {
-	// 		// fmt.Printf("%v is a map\n",val)
-	// 		for nk, nv := range val.(map[string] interface {}) {
-	// 			fmt.Println(nk)
-	// 			fmt.Println(nv)
-	// 		}
-	// 	}
-	// 	// fmt.Println(reflect.TypeOf(val))
-	// }
-
-	tmp_slice := make([]interface{}, 0)
-	// tmp_slice2 := make([]interface{}, 0)
-	// str :=strings.Replace("12;34;56",";",",",-1)
-	str := strings.Split("12;34;56",";")
-	// finres,_ := strconv.Atoi(str) 
-	// tmp_slice = append(tmp_slice,str)
-	// // fmt.Println(tmp_slice)
-	// for e := range tmp_slice {
-	// 	res := tmp_slice[e].(string)
-	// 	fmt.Println(res)
-	// }
-
-	for e := range str {
-		a ,_:= strconv.Atoi(str[e])
-		fmt.Println(a)
-		tmp_slice = append(tmp_slice,a)
-		tmp_slice = append(tmp_slice,",")
+/* 在slice中去除重复的元素，其中a必须是已经排序的序列。
+ * params:
+ *   a: slice对象，如[]string, []int, []float64, ...
+ * return:
+ *   []interface{}: 已经去除重复元素的新的slice对象
+ */
+ func SliceRemoveDuplicate(a interface{}) (ret []interface{}) {
+	if reflect.TypeOf(a).Kind() != reflect.Slice {
+		fmt.Printf("<SliceRemoveDuplicate> <a> is not slice but %T\n", a)
+		return ret
 	}
-	fmt.Println(tmp_slice[:len(tmp_slice)-1])
+ 
+	va := reflect.ValueOf(a)
+	for i := 0; i < va.Len(); i++ {
+		if i > 0 && reflect.DeepEqual(va.Index(i-1).Interface(), va.Index(i).Interface()) {
+			continue
+		}
+		ret = append(ret, va.Index(i).Interface())
+	}
+ 
+	return ret
+}
+func main() {
+	
+
+		slice_string := []string{"模块1","模块3","模块2","模块2","模块3"}
+
+	 
+		sort.Strings(slice_string)
+
+	 
+		fmt.Printf("slice_string = %v, %p\n", slice_string, slice_string)
+
+	 
+		ret_slice_string := SliceRemoveDuplicate(slice_string)
+	
+	 
+		fmt.Printf("ret_slice_string = %v, %p\n", ret_slice_string, ret_slice_string)
+
+	
+
+
+
+	
+
 	
 }

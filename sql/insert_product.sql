@@ -54,6 +54,6 @@ end $$
 
 
 -- 调用存储过程
-call insert_products(100,200);
+call insert_products(100,1000);
 
 

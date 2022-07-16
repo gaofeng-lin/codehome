@@ -40,6 +40,8 @@ begin
 
 -- set p_name = rand_string(4);
 
+
+
 select @target_id:=MAX(node_id) from mptt where node_level=n_level-1 ;
 
 select @nrgt:= rgt from mptt where node_id = @target_id ;
@@ -50,8 +52,8 @@ update mptt set lft = lft + 2 where lft >= @nrgt ;
 insert into mptt (node_name, lft, rgt, node_level) values(p_name, @nrgt, @nrgt + 1, n_level);
 
 
-end $$
 
+end $$
 
 
 
@@ -66,28 +68,28 @@ begin
     -- declare m int default 0;
 
 
-    while i < 200 do
-
-    start transaction;
+    
+    while i < 1000 do
+    
+   
     call insert_mptt(concat('风雷',i),2);
     call insert_mptt('200',3);
     call insert_mptt(concat('使用了算法',i),3);
     call insert_mptt('模块',3);
-    commit;
-
-    start transaction;
+   
+  
     while j < 3 do
 
     call insert_mptt(concat('模块',j),4);
 
     while k < 10 do
-    start transaction;
+   
     call insert_mptt(concat('参数',k),5);
 
-    call insert_mptt(concat('var_type',rand_string(2)),6);
-    call insert_mptt(concat('var_name',rand_string(2)),6);
-    call insert_mptt(concat('var_value',rand_string(2)),6);
-    commit;
+    call insert_mptt(concat('var_type','x'),6);
+    call insert_mptt(concat('var_name','x'),6);
+    call insert_mptt(concat('var_value','x'),6);
+ 
     -- while m < 3 do
     -- call insert_mptt(concat('参数',k),6);
     -- set m = m + 1;
@@ -104,8 +106,11 @@ begin
     commit;
     set j = 0;
     set i = i + 1;
+    -- if i mod 2 = 0 then
+    --  commit;
+    -- end if;
     end while;
-
+    
 
 
     -- call two_level('风雷1号');
@@ -123,5 +128,6 @@ begin
     
 end $$
 
+set global innodb_flush_log_at_trx_commit = 0;
 call create_product();
 
