@@ -11,8 +11,8 @@ func Test(context *gin.Context) {
 //获取请求body
 msg, _ := ioutil.ReadAll(context.Request.Body)
 str := string(msg)
-
-fmt.Println(str)
+fmt.Println(msg)
+// fmt.Println(str)
 
 
 
