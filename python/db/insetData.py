@@ -23,7 +23,7 @@ for key, value in data.items():
         tmpList = tmpList[0]
     tmpList = []
 
-
+print(res)
 
 # 批量插入可以先将数据组织为二维列表，其中每一行为一条记录。比如有student表字段为：stu_id, stu_name, stu_score
 
@@ -49,12 +49,12 @@ cursor = conn.cursor()
 sql = 'INSERT INTO basic_param(origin_name, present_name, version, branch_name) VALUES (%s, %s, %s, %s)'
 
 # 批量插入
-try:
-    res = cursor.executemany(sql, res)
-    print(res)
-    conn.commit()
-except Exception as e:
-    print(e)
-    conn.rollback()
-finally:
-    conn.close()
+# try:
+#     res = cursor.executemany(sql, res)
+#     print(res)
+#     conn.commit()
+# except Exception as e:
+#     print(e)
+#     conn.rollback()
+# finally:
+#     conn.close()
