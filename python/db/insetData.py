@@ -49,12 +49,12 @@ cursor = conn.cursor()
 sql = 'INSERT INTO basic_param(origin_name, present_name, version, branch_name) VALUES (%s, %s, %s, %s)'
 
 # 批量插入
-# try:
-#     res = cursor.executemany(sql, res)
-#     print(res)
-#     conn.commit()
-# except Exception as e:
-#     print(e)
-#     conn.rollback()
-# finally:
-#     conn.close()
+try:
+    res = cursor.executemany(sql, res)
+    print(res)
+    conn.commit()
+except Exception as e:
+    print(e)
+    conn.rollback()
+finally:
+    conn.close()
