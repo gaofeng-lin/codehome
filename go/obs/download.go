@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"bufio"
+	"strings"
 	// "io/ioutil"
 
 	obs "github.com/huaweicloud/huaweicloud-sdk-go-obs/obs"
@@ -14,16 +15,16 @@ func main() {
 	// paramFile := [...]string{"cfd_para.hypara","cfd_para.hypara","cfd_para.hypara","cfd_para.hypara",
 							// "cfd_para.hypara","cfd_para.hypara","cfd_para.hypara","cfd_para.hypara","cfd_para.hypara","cfd_para.hypara"}
 
-	var ak = "PSP8YKUVXYTEWZ2A9IRP"
-	var sk = "9WKsKkUuMj5l7VscttebvZ3AOdnuKK1aQsjxWS4B"
+	var ak = "HORREKV8QTZTQAE00I1Q"
+	var sk = "vOOLHCzeugIgfDCrdDtaoNI2ehw19hU9ex1HDFhO"
 	var endpoint = "obs.cn-southwest-2.myhuaweicloud.com"
 	// 创建ObsClient结构体
 	var obsClient, err = obs.New(ak, sk, endpoint)
 	if err == nil {
 		// 使用访问OBS
 		input := &obs.GetObjectInput{}
-       input.Bucket = "fenglei-dev"
-       input.Key = "test_obs/userID3/PHengLEIv3d0/bin/bin.zip"
+       input.Bucket = "phengcloud"
+       input.Key = "test03/local (2).zip"
        output, err := obsClient.GetObject(input)
        if err == nil {
               defer output.Body.Close()
@@ -33,7 +34,9 @@ func main() {
               var readErr error
               var readCount int
               // 读取对象内容
-			  filePath := "C:/a.zip"
+			  tmpSplit := strings.Split("test03/local (2).zip", "/")
+			  filename := tmpSplit[len(tmpSplit) - 1]
+			  filePath := "C:/" + filename
 			  file, err := os.Create(filePath)
 			  if err != nil {
 				  fmt.Println(err)
@@ -50,7 +53,7 @@ func main() {
                      readCount, readErr = output.Body.Read(p)
                      if readCount > 0 {
 						str := string(p[:readCount])
-						fmt.Println(str)
+						// fmt.Println(str)
 						_, err := writer.WriteString(str)
 						if err != nil {
 							fmt.Printf("文件写入出错：%s", err)
