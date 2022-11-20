@@ -23,7 +23,7 @@ func main() {
 		// 使用访问OBS
 		input := &obs.GetObjectInput{}
        input.Bucket = "fenglei-dev"
-       input.Key = "test_obs/userID3/PHengLEIv3d0/bin/bin.zip"
+       input.Key = "test_obs/someone/PHengLEIv3d0/grid/m6_str.cgns"
        output, err := obsClient.GetObject(input)
        if err == nil {
               defer output.Body.Close()
@@ -33,7 +33,7 @@ func main() {
               var readErr error
               var readCount int
               // 读取对象内容
-			  filePath := "C:/a.zip"
+			  filePath := "C:/m6_str.cgns"
 			  file, err := os.Create(filePath)
 			  if err != nil {
 				  fmt.Println(err)
