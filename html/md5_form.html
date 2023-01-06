@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+</head>
+<head>
+<script src="js/md5.min.js"></script>
+<script>
+function validateForm(){
+
+	var x=document.forms["myForm"]["email"].value;
+    var name = document.forms["myForm"]["name"].value;
+    var hash = md5(x, name) // "2063c1608d6e0baf80249c42e2be5804"
+	var atpos=x.indexOf("@");
+	var dotpos=x.lastIndexOf(".");
+	if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){
+		alert("不是一个有效的 e-mail 地址");
+  		return false;
+	} else{
+        alert("有效的e-mail地址")
+        console.log("name is:", name)
+        console.log("hash is :", hash)
+        return false;
+    }
+}
+</script>
+</head>
+<body>
+	
+<form name="myForm"  onsubmit="return validateForm();" method="post">
+输入一个网址: <input type="text" name="email">
+你的秘密: <input type="text" name="name">
+<input type="submit" value="提交">
+</form>
+	
+</body>
+</html>
