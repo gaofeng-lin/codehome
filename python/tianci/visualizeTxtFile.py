@@ -2,26 +2,26 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Step 1: Load the data from the txt file
-data = np.loadtxt('C:\\Users\\76585\\Desktop\\天池结果文件v2\\lossfile\\100pdeW.txt', delimiter=' ')  # assuming data is separated by tabs
+data = np.loadtxt('C:\\Users\\76585\\Desktop\\天池结果文件v2\\lossfile\\Based_BasedTrueDataloss_AbslossPdeloss_Use15630Point_UseAllData_Alldata.txt', delimiter=' ')  # assuming data is separated by tabs
 
 iterations = data[:, 0]
 train_loss = data[:, 1]
-pde_mse_loss = data[:, 2]
-conservation_mse_loss = data[:, 3]
-data_mre_loss = data[:, 4]
+# pde_mse_loss = data[:, 2]
+# conservation_mse_loss = data[:, 3]
+data_mre_loss = data[:, 2]
 
-train_mre_loss = data[:, 5]
-ux_mre_loss = data[:, 6]
-uy_mre_loss = data[:, 7]
-p_mre_loss = data[:, 8]
+train_mre_loss = data[:, 3]
+ux_mre_loss = data[:, 4]
+uy_mre_loss = data[:, 5]
+p_mre_loss = data[:, 6]
 
-ux_subtraction_mre_loss = data[:, 9]
-uy_subtraction_mre_loss = data[:, 10]
-p_subtraction_mre_loss = data[:, 11]
+ux_subtraction_mre_loss = data[:, 7]
+uy_subtraction_mre_loss = data[:, 8]
+p_subtraction_mre_loss = data[:, 9]
 
-# fake_data_loss = data[:, 4]
-# boundry_loss = data[:, 5]
-# conservation_loss = data[:, 6]
+fake_data_loss = data[:, 4]
+boundry_loss = data[:, 5]
+conservation_loss = data[:, 6]
 # train_loss = pde_loss + data_loss
 
 # 寻找各loss的最大值和最小值及其对应的迭代次数
@@ -36,8 +36,8 @@ train_mre_loss_min_idx = np.argmin(train_mre_loss)
 # 绘制三种loss
 plt.figure(figsize=(10, 6))
 plt.plot(iterations, train_loss, label='Train Loss', color='b')
-plt.plot(iterations, pde_mse_loss, label='Pde Mse Loss', color='#122856')
-plt.plot(iterations, conservation_mse_loss, label='Conservation Mse Loss', color='#535612')
+# plt.plot(iterations, pde_mse_loss, label='Pde Mse Loss', color='#122856')
+# plt.plot(iterations, conservation_mse_loss, label='Conservation Mse Loss', color='#535612')
 plt.plot(iterations, data_mre_loss, label='Data Mre Loss', color='r')
 plt.plot(iterations, train_mre_loss, label='Train Mre Loss', color='g')
 plt.plot(iterations, ux_mre_loss, label='Ux Mre Loss', color='k')

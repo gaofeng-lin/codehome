@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Step 1: Load the data from the txt file
-data = np.loadtxt('C:\\Users\\76585\\Desktop\\天池结果文件\\lossfile\\dataLossChangeMre.txt', delimiter=' ')  # assuming data is separated by tabs
+data = np.loadtxt('C:\\Users\\76585\\Desktop\\天池结果文件v2\\lossfile\\18.txt', delimiter=' ')  # assuming data is separated by tabs
 
 iterations = data[:, 0]
 train_loss = data[:, 1]
@@ -22,6 +22,7 @@ p_mre_loss = data[:, 6]
 # 寻找各loss的最大值和最小值及其对应的迭代次数
 train_min_idx = np.argmin(train_loss)
 train_max_idx = np.argmax(train_loss)
+# train_mre_min_idx = np.argmin(train_loss)
 # pde_min_idx = np.argmin(pde_loss)
 # pde_max_idx = np.argmax(pde_loss)
 # data_min_idx = np.argmin(data_loss)
