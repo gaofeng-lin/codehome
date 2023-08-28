@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 
+# 这个代码是将512*512的xyt保存为csv文件
+
 # 定义数据
 t = np.linspace(0,30,101)
 nn = 512 * 512
@@ -16,7 +18,7 @@ print(X.shape)
 XYT = np.stack((X.ravel(), Y.ravel(), T.ravel()), axis=-1)
 print(XYT.shape)
 # 使用pandas将结果保存为CSV文件
-# df = pd.DataFrame(XYT, columns=['x', 'y', 't'])
-# df.to_csv('C:\\Users\\76585\\Desktop\\tianchi\\512_xyt_coordinates.csv', index=False)
+df = pd.DataFrame(XYT, columns=['x', 'y', 't'])
+df.to_csv('C:\\Users\\76585\\Desktop\\512_xyt_coordinates.csv', index=False)
 
 
