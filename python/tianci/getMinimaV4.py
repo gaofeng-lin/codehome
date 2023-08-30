@@ -4,10 +4,10 @@ import h5py
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-from scipy.spatial import Delaunay, distance
+# from scipy.spatial import Delaunay, distance
 from collections import defaultdict
-from shapely.geometry import Polygon, Point, LineString
-from scipy.spatial.distance import euclidean
+# from shapely.geometry import Polygon, Point, LineString
+# from scipy.spatial.distance import euclidean
 from matplotlib.patches import Rectangle
 # import shapely
 
@@ -139,7 +139,7 @@ def plot_rectangles_below_threshold(subset, threshold=0.44, width=0.075):
                 value.append(p2)
                 value.append(p3)
                 value.append(p4)
-                rectangle = plt.Polygon([p1, p2, p3, p4], edgecolor='red', fill=False)
+                # rectangle = plt.Polygon([p1, p2, p3, p4], edgecolor='red', fill=False)
                 # print('value: ', value)
                 all_value.append(value)
          
