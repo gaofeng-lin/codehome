@@ -7,8 +7,6 @@ from mpl_toolkits.mplot3d import Axes3D
 from scipy.spatial import Delaunay, distance
 from collections import defaultdict
 from shapely.geometry import Polygon, Point, LineString
-from scipy.spatial.distance import euclidean
-from matplotlib.patches import Rectangle
 # import shapely
 
 
@@ -114,49 +112,55 @@ print(data2.shape)
 
 
 
-def plot_edges_below_threshold(points, threshold=0.44):
-    for i in range(len(points)):
-        for j in range(i + 1, len(points)):
-            p1, p2 = points[i, :2], points[j, :2]
-            dist = euclidean(p1, p2)
+def plot_edges_below_threshold(tri, threshold=0.44):
+    for simplex in tri.simplices:
+        for i in range(3):
+            u, v = sorted([simplex[i], simplex[(i+1)%3]])
+            dist = distance.euclidean(tri.points[u], tri.points[v])
             if dist <= threshold:
-                plt.plot([p1[0], p2[0]], [p1[1], p2[1]], 'k-')
+                plt.plot([tri.points[u][0], tri.points[v][0]],
+                         [tri.points[u][1], tri.points[v][1]], 'k-')
 
-def plot_rectangles_below_threshold(points, threshold=0.44, width=0.075):
-    rectangles = []
-    for i in range(len(points)):
-        for j in range(i + 1, len(points)):
-            p1, p2 = points[i, :2], points[j, :2]
-            dist = euclidean(p1, p2)
+def plot_rectangles_below_threshold(tri, threshold=0.44, width=0.075):
+    for simplex in tri.simplices:
+        for i in range(3):
+            u, v = sorted([simplex[i], simplex[(i+1)%3]])
+            dist = distance.euclidean(tri.points[u], tri.points[v])
             if dist <= threshold:
-                dx, dy = p2 - p1
+                dx = tri.points[v][0] - tri.points[u][0]
+                dy = tri.points[v][1] - tri.points[u][1]
                 angle = np.arctan2(dy, dx)
                 
-                center = (p1 + p2) / 2
-                half_width = width / 2
-                half_height = dist / 2
+                # 计算矩形的中心点坐标
+                center_x = (tri.points[u][0] + tri.points[v][0]) / 2
+                center_y = (tri.points[u][1] + tri.points[v][1]) / 2
                 
+                # 根据连线方向调整矩形的方向和坐标
                 if abs(dx) > abs(dy):
-                    # 水平连线，绘制垂直方向的矩形
-                    rectangle = Rectangle(center - np.array([half_height, half_width]), dist, width, angle=np.degrees(angle) - 90)
+                    p1 = (center_x - dist / 2, center_y - width / 2)
+                    p2 = (center_x + dist / 2, center_y - width / 2)
+                    p3 = (center_x + dist / 2, center_y + width / 2)
+                    p4 = (center_x - dist / 2, center_y + width / 2)
                 else:
-                    # 垂直连线，绘制水平方向的矩形
-                    rectangle = Rectangle(center - np.array([half_width, half_height]), width, dist, angle=np.degrees(angle))
-                rectangles.append(rectangle)
-    return rectangles
-
-unique_t_values = np.unique(data[:, 2])
+                    p1 = (center_x - width / 2, center_y - dist / 2)
+                    p2 = (center_x + width / 2, center_y - dist / 2)
+                    p3 = (center_x + width / 2, center_y + dist / 2)
+                    p4 = (center_x - width / 2, center_y + dist / 2)
+                
+                rectangle = plt.Polygon([p1, p2, p3, p4], edgecolor='red', fill=False)
+                plt.gca().add_patch(rectangle)
 
 for t in unique_t_values:
     subset = data[data[:, 2] == t]
+    tri = Delaunay(subset[:, :2])
     
     plt.figure(figsize=(10, 8))
     plt.scatter(subset[:, 0], subset[:, 1], c=subset[:, 3], cmap='viridis')  # 使用p值为颜色
-    
-    plot_edges_below_threshold(subset[:, :2], threshold=0.44)
+    plot_rectangles_below_threshold(tri, width=0.075)
     
     plt.colorbar(label='p value')
     plt.title(f"Data for t={t}")
     plt.xlabel('x')
     plt.ylabel('y')
     plt.show()
+

@@ -1,4 +1,4 @@
-# 这段代码是从原始数据当中把值小于-e4的数据选出来，按照ux,uy,p分类。
+# 这段代码是以连线为中心画出矩阵，然后只显示有矩阵的t时刻图像
 
 import h5py
 import numpy as np
@@ -113,50 +113,59 @@ print(data2.shape)
 # PlotData(p)
 
 
-
-def plot_edges_below_threshold(points, threshold=0.44):
-    for i in range(len(points)):
-        for j in range(i + 1, len(points)):
-            p1, p2 = points[i, :2], points[j, :2]
-            dist = euclidean(p1, p2)
+def plot_rectangles_below_threshold(subset, threshold=0.44, width=0.075):
+    for i in range(len(subset)):
+        for j in range(i + 1, len(subset)):
+            point1 = subset[i, :2]
+            point2 = subset[j, :2]
+            dist = np.linalg.norm(point2 - point1)
+            
             if dist <= threshold:
-                plt.plot([p1[0], p2[0]], [p1[1], p2[1]], 'k-')
-
-def plot_rectangles_below_threshold(points, threshold=0.44, width=0.075):
-    rectangles = []
-    for i in range(len(points)):
-        for j in range(i + 1, len(points)):
-            p1, p2 = points[i, :2], points[j, :2]
-            dist = euclidean(p1, p2)
-            if dist <= threshold:
-                dx, dy = p2 - p1
+                dx = point2[0] - point1[0]
+                dy = point2[1] - point1[1]
                 angle = np.arctan2(dy, dx)
                 
-                center = (p1 + p2) / 2
-                half_width = width / 2
-                half_height = dist / 2
+                # 计算矩形的中心点坐标
+                center_x = (point1[0] + point2[0]) / 2
+                center_y = (point1[1] + point2[1]) / 2
                 
+                # 根据连线方向调整矩形的方向和坐标
                 if abs(dx) > abs(dy):
-                    # 水平连线，绘制垂直方向的矩形
-                    rectangle = Rectangle(center - np.array([half_height, half_width]), dist, width, angle=np.degrees(angle) - 90)
+                    p1 = (center_x - dist / 2, center_y - width / 2)
+                    p2 = (center_x + dist / 2, center_y - width / 2)
+                    p3 = (center_x + dist / 2, center_y + width / 2)
+                    p4 = (center_x - dist / 2, center_y + width / 2)
                 else:
-                    # 垂直连线，绘制水平方向的矩形
-                    rectangle = Rectangle(center - np.array([half_width, half_height]), width, dist, angle=np.degrees(angle))
-                rectangles.append(rectangle)
-    return rectangles
-
-unique_t_values = np.unique(data[:, 2])
+                    p1 = (center_x - width / 2, center_y - dist / 2)
+                    p2 = (center_x + width / 2, center_y - dist / 2)
+                    p3 = (center_x + width / 2, center_y + dist / 2)
+                    p4 = (center_x - width / 2, center_y + dist / 2)
+                
+            
+                rectangle = plt.Polygon([p1, p2, p3, p4], edgecolor='red', fill=False)
+         
+                plt.gca().add_patch(rectangle)
 
 for t in unique_t_values:
     subset = data[data[:, 2] == t]
     
-    plt.figure(figsize=(10, 8))
-    plt.scatter(subset[:, 0], subset[:, 1], c=subset[:, 3], cmap='viridis')  # 使用p值为颜色
+    has_rectangles = False
+    for i in range(len(subset)):
+        for j in range(i + 1, len(subset)):
+            point1 = subset[i, :2]
+            point2 = subset[j, :2]
+            dist = np.linalg.norm(point2 - point1)
+            if dist <= 0.44:
+                has_rectangles = True
+                break
     
-    plot_edges_below_threshold(subset[:, :2], threshold=0.44)
-    
-    plt.colorbar(label='p value')
-    plt.title(f"Data for t={t}")
-    plt.xlabel('x')
-    plt.ylabel('y')
-    plt.show()
+    if has_rectangles:
+        plt.figure(figsize=(10, 8))
+        plt.scatter(subset[:, 0], subset[:, 1], c=subset[:, 3], cmap='viridis')  # 使用p值为颜色
+        plot_rectangles_below_threshold(subset, width=0.075)
+        
+        plt.colorbar(label='p value')
+        plt.title(f"Data for t={t}")
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.show()
