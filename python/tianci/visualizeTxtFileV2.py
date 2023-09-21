@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Step 1: Load the data from the txt file
-data = np.loadtxt('C:\\Users\\76585\\Desktop\\天池结果文件v2\\lossfile\\51.txt', delimiter=' ')  # assuming data is separated by tabs
+data = np.loadtxt('C:\\Users\\76585\\Desktop\\天池结果文件v2\\lossfile\\85.txt', delimiter=' ')  # assuming data is separated by tabs
 
 iterations = data[:, 0]
 train_loss = data[:, 1]
