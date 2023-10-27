@@ -2,8 +2,8 @@ import os
 import re
 
 # 定义目标文件夹路径
-folder_path = "C:/Users/76585/Desktop/origin_p_dat"
-output_file = "C:/Users/76585/Desktop/origin_p_dat/output.txt"
+folder_path = "C:/Users/76585/Desktop/mode238_enhancepde_1step_p_dat"
+output_file = "C:/Users/76585/Desktop/mode238_enhancepde_1step_p_dat/output.txt"
 
 # 获取文件夹中的所有文件名
 all_files = os.listdir(folder_path)
