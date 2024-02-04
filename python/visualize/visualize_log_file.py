@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import re
 
 # 日志文件路径
-log_file_path = 'C:/Users/76585/Desktop/logfile/simvp/68.log'
+log_file_path = 'C:/Users/76585/Desktop/logfile/simvp/69.log'
 
 # 初始化用于存储epoch数、训练集loss和验证集loss的列表
 epochs, train_losses, val_losses = [], [], []
