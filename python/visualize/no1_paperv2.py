@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+# 这个是绘制消融实验的折线图
+
 # 假设timestamps是一个包含69个时间步标签的列表
 timestamps = np.arange(0, 64)  # 例如，从1到69
 

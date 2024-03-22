@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+# 设置相同的颜色
+
 # 假设timestamps是一个包含69个时间步标签的列表
 timestamps = np.arange(0, 64)  # 例如，从1到69
 
