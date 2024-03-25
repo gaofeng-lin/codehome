@@ -45,6 +45,16 @@ def crop_all_images_in_folder(folder_path):
             crop_image_to_colored_region(image_path, output_path)
             print(f"Cropped and saved: {output_path}")
 
+
+# def crop_all_images_in_folder(folder_path):
+#     for file_name in os.listdir(folder_path):
+#         if file_name.endswith('.png'):
+#             image_path = os.path.join(folder_path, file_name)
+#             output_path = os.path.join(folder_path, file_name.replace('.png', '_cropped.eps'))
+#             crop_image_to_colored_region(image_path, output_path)
+#             print(f"Cropped and saved: {output_path}")
+
 # 将folder_path变量更改为你的文件夹路径
-folder_path = 'C:/Users/76585/OneDrive/metting_exp_etl/exp/202311中文期刊投稿/图片/可视化图/rm外推'
+
+folder_path = 'C:/Users/76585/Desktop/test'
 crop_all_images_in_folder(folder_path)
