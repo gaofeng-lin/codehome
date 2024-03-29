@@ -57,6 +57,14 @@ def crop_all_tiff_images_in_folder(folder_path):
             crop_image_to_remove_border(image_path, output_path)
             print(f"Cropped and saved: {output_path}")
 
+def single_image(folder_path):
+    file_name = "v1.tiff"
+    image_path = os.path.join(folder_path, file_name)
+    output_path = os.path.join(folder_path, 'convert',file_name.replace('.tif', '_cropped.tif').replace('.tiff', '_cropped.tiff'))
+    crop_image_to_remove_border(image_path, output_path)
+    print(f"Cropped and saved: {output_path}")
+
 # 将folder_path变量更改为你的文件夹路径
-folder_path = 'C:/Users/76585/Desktop/test/rt-inter'
+folder_path = 'C:/Users/76585/Desktop/test/weno3d-inter'
 crop_all_tiff_images_in_folder(folder_path)
+# single_image(folder_path)
