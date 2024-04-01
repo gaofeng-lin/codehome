@@ -46,6 +46,6 @@ def crop_inner_black_box(image_path, output_path):
     # 保存截取后的图片
     cropped_img.save(output_path)
 # 调用函数进行截取
-input_image_path = 'C:/Users/76585/Desktop/ffs-range.png'  # 输入图片路径
-output_image_path = 'C:/Users/76585/Desktop/ffs-rangev2.png'  # 输出图片路径
+input_image_path = 'C:/Users/76585/Desktop/dm-inter-range.png'  # 输入图片路径
+output_image_path = 'C:/Users/76585/Desktop/dm-inter-rangev2.png'  # 输出图片路径
 crop_inner_black_box(input_image_path, output_image_path)
